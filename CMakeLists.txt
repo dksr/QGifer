@@ -48,6 +48,12 @@ IF(WIN32)
 	SET(CMAKE_INSTALL_PREFIX "${TARGET_NAME}")
 ENDIF(WIN32)
 
+find_package( OpenCV REQUIRED )
+if( OpenCV_FOUND )
+list( APPEND ThirdParty_LIBS ${OpenCV_LIBS} )
+    include_directories( ${OpenCV_INCLUDE_DIRS} )
+endif( OpenCV_FOUND )
+
 FIND_PACKAGE(OpenCV REQUIRED core highgui imgproc )
 FIND_PACKAGE(Qt4 REQUIRED QtCore QtGui)
 FIND_PACKAGE(GIF REQUIRED)
